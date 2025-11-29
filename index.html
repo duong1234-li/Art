@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider Lily</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="scene">
+        <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Single Floret Definition -->
+                <g id="floret">
+                    <!-- Extra Back Petals (New Layer) -->
+                    <path d="M0,0 C5,-18 18,-22 28,-12 C22,-7 12,-7 0,0" fill="#aa0000" opacity="0.9"
+                        transform="rotate(15)" />
+                    <path d="M0,0 C5,-18 18,-22 28,-12 C22,-7 12,-7 0,0" fill="#aa0000" opacity="0.9"
+                        transform="rotate(75)" />
+                    <path d="M0,0 C5,-18 18,-22 28,-12 C22,-7 12,-7 0,0" fill="#aa0000" opacity="0.9"
+                        transform="rotate(135)" />
+                    <path d="M0,0 C5,-18 18,-22 28,-12 C22,-7 12,-7 0,0" fill="#aa0000" opacity="0.9"
+                        transform="rotate(195)" />
+                    <path d="M0,0 C5,-18 18,-22 28,-12 C22,-7 12,-7 0,0" fill="#aa0000" opacity="0.9"
+                        transform="rotate(255)" />
+                    <path d="M0,0 C5,-18 18,-22 28,-12 C22,-7 12,-7 0,0" fill="#aa0000" opacity="0.9"
+                        transform="rotate(315)" />
+
+                    <!-- Petals -->
+                    <path d="M0,0 C5,-15 15,-20 25,-10 C20,-5 10,-5 0,0" fill="#cc0000" opacity="0.95" />
+                    <path d="M0,0 C5,-15 15,-20 25,-10 C20,-5 10,-5 0,0" fill="#cc0000" opacity="0.95"
+                        transform="rotate(60)" />
+                    <path d="M0,0 C5,-15 15,-20 25,-10 C20,-5 10,-5 0,0" fill="#cc0000" opacity="0.95"
+                        transform="rotate(120)" />
+                    <path d="M0,0 C5,-15 15,-20 25,-10 C20,-5 10,-5 0,0" fill="#cc0000" opacity="0.95"
+                        transform="rotate(180)" />
+                    <path d="M0,0 C5,-15 15,-20 25,-10 C20,-5 10,-5 0,0" fill="#cc0000" opacity="0.95"
+                        transform="rotate(240)" />
+                    <path d="M0,0 C5,-15 15,-20 25,-10 C20,-5 10,-5 0,0" fill="#cc0000" opacity="0.95"
+                        transform="rotate(300)" />
+
+                    <!-- Inner Petals -->
+                    <path d="M0,0 Q5,-10 10,-5 Q5,0 0,0" fill="#990000" transform="rotate(30)" opacity="0.8" />
+                    <path d="M0,0 Q5,-10 10,-5 Q5,0 0,0" fill="#990000" transform="rotate(90)" opacity="0.8" />
+                    <path d="M0,0 Q5,-10 10,-5 Q5,0 0,0" fill="#990000" transform="rotate(150)" opacity="0.8" />
+                    <path d="M0,0 Q5,-10 10,-5 Q5,0 0,0" fill="#990000" transform="rotate(210)" opacity="0.8" />
+                    <path d="M0,0 Q5,-10 10,-5 Q5,0 0,0" fill="#990000" transform="rotate(270)" opacity="0.8" />
+                    <path d="M0,0 Q5,-10 10,-5 Q5,0 0,0" fill="#990000" transform="rotate(330)" opacity="0.8" />
+
+                    <!-- Extra Inner Petals (New Layer) -->
+                    <path d="M0,0 Q5,-8 8,-4 Q4,0 0,0" fill="#ff0000" transform="rotate(45)" opacity="0.7" />
+                    <path d="M0,0 Q5,-8 8,-4 Q4,0 0,0" fill="#ff0000" transform="rotate(105)" opacity="0.7" />
+                    <path d="M0,0 Q5,-8 8,-4 Q4,0 0,0" fill="#ff0000" transform="rotate(165)" opacity="0.7" />
+                    <path d="M0,0 Q5,-8 8,-4 Q4,0 0,0" fill="#ff0000" transform="rotate(225)" opacity="0.7" />
+                    <path d="M0,0 Q5,-8 8,-4 Q4,0 0,0" fill="#ff0000" transform="rotate(285)" opacity="0.7" />
+                    <path d="M0,0 Q5,-8 8,-4 Q4,0 0,0" fill="#ff0000" transform="rotate(345)" opacity="0.7" />
+
+                    <!-- Stamens -->
+                    <g fill="none" stroke="#ff3333" stroke-width="0.8">
+                        <path d="M0,0 C10,-40 40,-60 80,-50" />
+                        <path d="M0,0 C10,-40 40,-60 80,-50" transform="rotate(20)" />
+                        <path d="M0,0 C10,-40 40,-60 80,-50" transform="rotate(-20)" />
+                        <path d="M0,0 C10,-40 40,-60 80,-50" transform="rotate(40)" />
+                        <path d="M0,0 C10,-40 40,-60 80,-50" transform="rotate(-40)" />
+                    </g>
+
+                    <!-- Anthers -->
+                    <g fill="#ffcccc">
+                        <circle cx="80" cy="-50" r="1.5" />
+                        <circle cx="80" cy="-50" r="1.5" transform="rotate(20)" />
+                        <circle cx="80" cy="-50" r="1.5" transform="rotate(-20)" />
+                        <circle cx="80" cy="-50" r="1.5" transform="rotate(40)" />
+                        <circle cx="80" cy="-50" r="1.5" transform="rotate(-40)" />
+                    </g>
+                </g>
+
+                <!-- Full Flower Head (Umbel) -->
+                <g id="flower-head">
+                    <use href="#floret" transform="rotate(0) translate(0, -10) scale(1.5)" />
+                    <use href="#floret" transform="rotate(60) translate(0, -10) scale(1.5)" />
+                    <use href="#floret" transform="rotate(120) translate(0, -10) scale(1.5)" />
+                    <use href="#floret" transform="rotate(180) translate(0, -10) scale(1.5)" />
+                    <use href="#floret" transform="rotate(240) translate(0, -10) scale(1.5)" />
+                    <use href="#floret" transform="rotate(300) translate(0, -10) scale(1.5)" />
+                </g>
+
+                <!-- Proper Leaf Definition -->
+                <g id="leaf">
+                    <!-- Filled leaf shape -->
+                    <path d="M0,0 Q15,-100 0,-250 Q-15,-100 0,0" fill="#1a3315" opacity="0.9" />
+                    <!-- Central vein -->
+                    <path d="M0,0 Q5,-100 0,-240" stroke="#2d5a27" stroke-width="1" fill="none" opacity="0.5" />
+                </g>
+
+                <!-- Glow Filter -->
+                <filter id="bloom" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                    <feMerge>
+                        <feMergeNode in="coloredBlur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <!-- Leaves Layer (Background) -->
+            <g transform="translate(0, 800)">
+                <!-- Dense thicket of leaves -->
+                <g class="leaves">
+                    <!-- Left Side -->
+                    <use href="#leaf" transform="translate(50, 0) scale(0.8) rotate(-10)" />
+                    <use href="#leaf" transform="translate(80, 0) scale(0.9) rotate(-5)" />
+                    <use href="#leaf" transform="translate(120, 0) scale(0.7) rotate(-15)" />
+                    <use href="#leaf" transform="translate(150, 0) scale(1.0) rotate(0)" />
+                    <use href="#leaf" transform="translate(180, 0) scale(0.85) rotate(5)" />
+                    <use href="#leaf" transform="translate(220, 0) scale(0.95) rotate(-8)" />
+                    <use href="#leaf" transform="translate(250, 0) scale(0.75) rotate(12)" />
+                    <use href="#leaf" transform="translate(280, 0) scale(1.1) rotate(-3)" />
+
+                    <!-- Center -->
+                    <use href="#leaf" transform="translate(320, 0) scale(0.9) rotate(5)" />
+                    <use href="#leaf" transform="translate(350, 0) scale(0.8) rotate(-5)" />
+                    <use href="#leaf" transform="translate(380, 0) scale(1.0) rotate(0)" />
+                    <use href="#leaf" transform="translate(410, 0) scale(0.85) rotate(8)" />
+                    <use href="#leaf" transform="translate(440, 0) scale(0.95) rotate(-2)" />
+                    <use href="#leaf" transform="translate(470, 0) scale(0.7) rotate(15)" />
+
+                    <!-- Right Side -->
+                    <use href="#leaf" transform="translate(520, 0) scale(0.9) rotate(-5)" />
+                    <use href="#leaf" transform="translate(550, 0) scale(0.8) rotate(10)" />
+                    <use href="#leaf" transform="translate(580, 0) scale(1.0) rotate(-8)" />
+                    <use href="#leaf" transform="translate(620, 0) scale(0.75) rotate(5)" />
+                    <use href="#leaf" transform="translate(650, 0) scale(0.9) rotate(-12)" />
+                    <use href="#leaf" transform="translate(680, 0) scale(0.85) rotate(3)" />
+                    <use href="#leaf" transform="translate(720, 0) scale(0.95) rotate(-6)" />
+                    <use href="#leaf" transform="translate(750, 0) scale(0.8) rotate(8)" />
+                </g>
+            </g>
+
+            <!-- Flowers Layer -->
+            <g filter="url(#bloom)">
+                <!-- Flower 1 (Center, High) -->
+                <g transform="translate(400, 400)">
+                    <path d="M0,0 C30,100 -30,300 0,400" stroke="#2d5a27" stroke-width="6" fill="none" />
+                    <use href="#flower-head" />
+                </g>
+
+                <!-- Flower 2 (Left, Low) -->
+                <g transform="translate(200, 550) scale(0.8)">
+                    <path d="M0,0 Q-40,200 0,400" stroke="#2d5a27" stroke-width="6" fill="none" />
+                    <use href="#flower-head" />
+                </g>
+
+                <!-- Flower 3 (Right, Mid) -->
+                <g transform="translate(600, 480) scale(0.9)">
+                    <path d="M0,0 Q40,200 0,400" stroke="#2d5a27" stroke-width="6" fill="none" />
+                    <use href="#flower-head" />
+                </g>
+            </g>
+
+            <!-- Floating Particles (Animated) -->
+            <!-- Floating Particles (Animated) -->
+            <g id="floating-particles" fill="#ff3333" opacity="0.6"></g>
+            <!-- Snow Particles -->
+            <g id="snow" fill="#ffffff" opacity="0.8" style="display: none;"></g>
+            <!-- Rain Particles -->
+            <g id="rain" stroke="#aaddff" stroke-width="1" opacity="0.6" style="display: none;"></g>
+        </svg>
+        <button id="snow-toggle">Enable Snow</button>
+        <button id="rain-toggle">Enable Rain</button>
+    </div>
+    <script>
+        const snow = document.getElementById('snow');
+        const snowBtn = document.getElementById('snow-toggle');
+        const rain = document.getElementById('rain');
+        const rainBtn = document.getElementById('rain-toggle');
+        const floatingParticles = document.getElementById('floating-particles');
+
+        snowBtn.addEventListener('click', () => {
+            if (snow.style.display === 'none') {
+                snow.style.display = 'block';
+                snowBtn.textContent = 'Disable Snow';
+            } else {
+                snow.style.display = 'none';
+                snowBtn.textContent = 'Enable Snow';
+            }
+        });
+
+        rainBtn.addEventListener('click', () => {
+            if (rain.style.display === 'none') {
+                rain.style.display = 'block';
+                rainBtn.textContent = 'Disable Rain';
+            } else {
+                rain.style.display = 'none';
+                rainBtn.textContent = 'Enable Rain';
+            }
+        });
+
+        function createSnow(count) {
+            const ns = "http://www.w3.org/2000/svg";
+            for (let i = 0; i < count; i++) {
+                const circle = document.createElementNS(ns, "circle");
+                const cx = Math.random() * 800;
+                const r = 1 + Math.random() * 2;
+                const dur = 5 + Math.random() * 5;
+                const delay = Math.random() * 5;
+
+                circle.setAttribute("cx", cx);
+                circle.setAttribute("cy", -10);
+                circle.setAttribute("r", r);
+
+                const animCy = document.createElementNS(ns, "animate");
+                animCy.setAttribute("attributeName", "cy");
+                animCy.setAttribute("from", -10);
+                animCy.setAttribute("to", 810);
+                animCy.setAttribute("dur", dur + "s");
+                animCy.setAttribute("repeatCount", "indefinite");
+                animCy.setAttribute("begin", delay + "s");
+
+                const animCx = document.createElementNS(ns, "animate");
+                animCx.setAttribute("attributeName", "cx");
+                animCx.setAttribute("values", `${cx};${cx + 20};${cx}`);
+                animCx.setAttribute("dur", (dur / 2) + "s");
+                animCx.setAttribute("repeatCount", "indefinite");
+
+                circle.appendChild(animCy);
+                circle.appendChild(animCx);
+                snow.appendChild(circle);
+            }
+        }
+
+        function createRain(count) {
+            const ns = "http://www.w3.org/2000/svg";
+            for (let i = 0; i < count; i++) {
+                const line = document.createElementNS(ns, "line");
+                const x = Math.random() * 800;
+                const y1 = -20 - Math.random() * 30;
+                const len = 20 + Math.random() * 20;
+                const y2 = y1 + len;
+                const dur = 0.5 + Math.random() * 0.5;
+                const delay = Math.random() * 2;
+
+                line.setAttribute("x1", x);
+                line.setAttribute("x2", x);
+                line.setAttribute("y1", y1);
+                line.setAttribute("y2", y2);
+
+                const animY1 = document.createElementNS(ns, "animate");
+                animY1.setAttribute("attributeName", "y1");
+                animY1.setAttribute("from", y1);
+                animY1.setAttribute("to", 800);
+                animY1.setAttribute("dur", dur + "s");
+                animY1.setAttribute("repeatCount", "indefinite");
+                animY1.setAttribute("begin", delay + "s");
+
+                const animY2 = document.createElementNS(ns, "animate");
+                animY2.setAttribute("attributeName", "y2");
+                animY2.setAttribute("from", y2);
+                animY2.setAttribute("to", 800 + len);
+                animY2.setAttribute("dur", dur + "s");
+                animY2.setAttribute("repeatCount", "indefinite");
+                animY2.setAttribute("begin", delay + "s");
+
+                line.appendChild(animY1);
+                line.appendChild(animY2);
+                rain.appendChild(line);
+            }
+        }
+
+        function createFloatingParticles(count) {
+            const ns = "http://www.w3.org/2000/svg";
+            for (let i = 0; i < count; i++) {
+                const circle = document.createElementNS(ns, "circle");
+                const cx = Math.random() * 800;
+                const cy = Math.random() * 800;
+                const r = 1 + Math.random() * 2;
+                const dur = 5 + Math.random() * 5;
+                const delay = Math.random() * 5;
+                const floatDist = 50 + Math.random() * 100;
+
+                circle.setAttribute("cx", cx);
+                circle.setAttribute("cy", cy);
+                circle.setAttribute("r", r);
+
+                const animCy = document.createElementNS(ns, "animate");
+                animCy.setAttribute("attributeName", "cy");
+                animCy.setAttribute("from", cy);
+                animCy.setAttribute("to", cy - floatDist);
+                animCy.setAttribute("dur", dur + "s");
+                animCy.setAttribute("repeatCount", "indefinite");
+                animCy.setAttribute("begin", delay + "s");
+
+                const animOpacity = document.createElementNS(ns, "animate");
+                animOpacity.setAttribute("attributeName", "opacity");
+                animOpacity.setAttribute("values", "0;0.8;0");
+                animOpacity.setAttribute("dur", dur + "s");
+                animOpacity.setAttribute("repeatCount", "indefinite");
+                animOpacity.setAttribute("begin", delay + "s");
+
+                circle.appendChild(animCy);
+                circle.appendChild(animOpacity);
+                floatingParticles.appendChild(circle);
+            }
+        }
+
+        createSnow(50);
+        createRain(100);
+        createFloatingParticles(25);
+    </script>
+</body>
+
+</html>
