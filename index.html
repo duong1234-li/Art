@@ -105,7 +105,7 @@
                         <feMergeNode in="SourceGraphic" />
                     </feMerge>
                 </filter>
-                </filter>
+
 
                 <!-- Water Ripple Filter -->
                 <filter id="water-ripple">
@@ -227,6 +227,7 @@
                 document.querySelector('g[filter="url(#bloom)"]').style.filter = 'url(#bloom) url(#water-ripple)';
 
                 waterBtn.textContent = 'Disable Water';
+                document.title = 'Im Drowning';
                 animateWater();
             } else {
                 // Disable Water
@@ -235,6 +236,7 @@
                 document.querySelector('g[filter="url(#bloom)"]').style.filter = 'url(#bloom)';
 
                 waterBtn.textContent = 'Enable Water';
+                document.title = 'Spider Lily';
                 cancelAnimationFrame(waterAnimationId);
             }
         });
