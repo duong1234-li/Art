@@ -60,34 +60,9 @@
                     <path d="M0,0 Q5,-8 8,-4 Q4,0 0,0" fill="#ff0000" transform="rotate(285)" opacity="0.7" />
                     <path d="M0,0 Q5,-8 8,-4 Q4,0 0,0" fill="#ff0000" transform="rotate(345)" opacity="0.7" />
 
-                    <!-- Stamens -->
-                    <g fill="none" stroke="#ff3333" stroke-width="0.8">
-                        <path d="M0,0 C10,-40 40,-60 80,-50" />
-                        <path d="M0,0 C10,-40 40,-60 80,-50" transform="rotate(20)" />
-                        <path d="M0,0 C10,-40 40,-60 80,-50" transform="rotate(-20)" />
-                        <path d="M0,0 C10,-40 40,-60 80,-50" transform="rotate(40)" />
-                        <path d="M0,0 C10,-40 40,-60 80,-50" transform="rotate(-40)" />
-                    </g>
 
-                    <!-- Anthers -->
-                    <g fill="#ffcccc">
-                        <circle cx="80" cy="-50" r="1.5" />
-                        <circle cx="80" cy="-50" r="1.5" transform="rotate(20)" />
-                        <circle cx="80" cy="-50" r="1.5" transform="rotate(-20)" />
-                        <circle cx="80" cy="-50" r="1.5" transform="rotate(40)" />
-                        <circle cx="80" cy="-50" r="1.5" transform="rotate(-40)" />
-                    </g>
                 </g>
 
-                <!-- Full Flower Head (Umbel) -->
-                <g id="flower-head">
-                    <use href="#floret" transform="rotate(0) translate(0, -10) scale(1.5)" />
-                    <use href="#floret" transform="rotate(60) translate(0, -10) scale(1.5)" />
-                    <use href="#floret" transform="rotate(120) translate(0, -10) scale(1.5)" />
-                    <use href="#floret" transform="rotate(180) translate(0, -10) scale(1.5)" />
-                    <use href="#floret" transform="rotate(240) translate(0, -10) scale(1.5)" />
-                    <use href="#floret" transform="rotate(300) translate(0, -10) scale(1.5)" />
-                </g>
 
                 <!-- Proper Leaf Definition -->
                 <g id="leaf">
@@ -154,19 +129,19 @@
                 <!-- Flower 1 (Center, High) -->
                 <g transform="translate(400, 400)">
                     <path d="M0,0 C30,100 -30,300 0,400" stroke="#2d5a27" stroke-width="6" fill="none" />
-                    <use href="#flower-head" />
+                    <g class="procedural-flower"></g>
                 </g>
 
                 <!-- Flower 2 (Left, Low) -->
                 <g transform="translate(200, 550) scale(0.8)">
                     <path d="M0,0 Q-40,200 0,400" stroke="#2d5a27" stroke-width="6" fill="none" />
-                    <use href="#flower-head" />
+                    <g class="procedural-flower"></g>
                 </g>
 
                 <!-- Flower 3 (Right, Mid) -->
                 <g transform="translate(600, 480) scale(0.9)">
                     <path d="M0,0 Q40,200 0,400" stroke="#2d5a27" stroke-width="6" fill="none" />
-                    <use href="#flower-head" />
+                    <g class="procedural-flower"></g>
                 </g>
             </g>
 
@@ -397,6 +372,129 @@
         createRain(100);
         createFloatingParticles(25);
         createBubbles(40);
+        generateFlowers();
+
+        function generateFlowers() {
+            const flowers = document.querySelectorAll('.procedural-flower');
+            const ns = "http://www.w3.org/2000/svg";
+
+            flowers.forEach(flower => {
+                // Define layers and positions
+                const layers = [
+                    // Back Layer
+                    { x: -25, y: -10, scale: 0.7, rotate: -20, opacity: 0.8, stamenScale: 0.7, stamenRot: -30 },
+                    { x: 25, y: -10, scale: 0.7, rotate: 20, opacity: 0.8, stamenScale: 0.7, stamenRot: 30 },
+                    { x: 0, y: -15, scale: 0.8, rotate: 0, opacity: 0.8, stamenScale: 0.7, stamenRot: 0 },
+                    // Front Layer
+                    { x: -15, y: 10, scale: 0.9, rotate: -10, opacity: 1, stamenScale: 0.8, stamenRot: -15 },
+                    { x: 15, y: 10, scale: 0.9, rotate: 10, opacity: 1, stamenScale: 0.8, stamenRot: 15 },
+                    { x: 0, y: 0, scale: 1, rotate: 0, opacity: 1, stamenScale: 0.9, stamenRot: 0 }
+                ];
+
+                layers.forEach(config => {
+                    const group = document.createElementNS(ns, "g");
+                    group.setAttribute("transform", `translate(${config.x}, ${config.y})`);
+
+                    // 1. Create Stamen Cluster (Ball Shape)
+                    const stamenGroup = document.createElementNS(ns, "g");
+                    stamenGroup.setAttribute("transform", `rotate(${config.stamenRot}) scale(${config.stamenScale})`);
+
+                    // Use fixed steps for angles to ensure ball shape, with jitter
+                    const startAngle = -85;
+                    const endAngle = 85;
+                    const step = 15; // Denser step for better coverage
+
+                    for (let baseAngle = startAngle; baseAngle <= endAngle; baseAngle += step) {
+                        // Add randomness to the angle
+                        const angleJitter = -5 + Math.random() * 10;
+                        const angle = baseAngle + angleJitter;
+
+                        // Randomize length
+                        const lenScale = 0.8 + Math.random() * 0.4; // 0.8 to 1.2
+
+                        const stamen = document.createElementNS(ns, "g");
+                        stamen.setAttribute("transform", `rotate(${angle})`);
+
+                        const path = document.createElementNS(ns, "path");
+
+                        const length = 140 * lenScale;
+
+                        // Calculate curve bias to make tips face up
+                        // If angle is positive (right), we want to curve left (negative x)
+                        // If angle is negative (left), we want to curve right (positive x)
+                        // This counteracts the rotation to make the tip point more vertically
+                        const curveBias = -angle * 0.8;
+
+                        // Control points
+                        // cp1: slight bias
+                        const cp1x = (Math.random() * 10 - 5) + (curveBias * 0.2);
+                        const cp1y = -length * 0.3;
+
+                        // cp2: stronger bias
+                        const cp2x = (Math.random() * 20 - 10) + (curveBias * 0.6);
+                        const cp2y = -length * 0.7;
+
+                        // end: strongest bias (tip points up)
+                        const endx = (Math.random() * 10 - 5) + curveBias;
+                        const endy = -length;
+
+                        path.setAttribute("d", `M0,0 C${cp1x},${cp1y} ${cp2x},${cp2y} ${endx},${endy}`);
+                        path.setAttribute("stroke", "#ff3333");
+                        path.setAttribute("stroke-width", "0.8");
+                        path.setAttribute("fill", "none");
+
+                        const anther = document.createElementNS(ns, "circle");
+                        anther.setAttribute("cx", endx);
+                        anther.setAttribute("cy", endy);
+                        anther.setAttribute("r", "1.5");
+                        anther.setAttribute("fill", "#ffcccc");
+
+                        stamen.appendChild(path);
+                        stamen.appendChild(anther);
+                        stamenGroup.appendChild(stamen);
+                    }
+
+                    // Add foreshortened stamens in center (randomized)
+                    for (let i = 0; i < 3; i++) {
+                        const stamen = document.createElementNS(ns, "g");
+                        stamen.setAttribute("transform", `rotate(${-20 + Math.random() * 40})`);
+                        const path = document.createElementNS(ns, "path");
+                        // Base short curve: M0,0 Q10,-30 20,-50
+                        const scale = 0.8 + Math.random() * 0.4;
+                        const qx = 10 * scale + (Math.random() * 5);
+                        const qy = -30 * scale + (Math.random() * 5);
+                        const ex = 20 * scale + (Math.random() * 5);
+                        const ey = -50 * scale + (Math.random() * 5);
+
+                        path.setAttribute("d", `M0,0 Q${qx},${qy} ${ex},${ey}`);
+                        path.setAttribute("stroke", "#ff3333");
+                        path.setAttribute("stroke-width", "0.8");
+                        path.setAttribute("fill", "none");
+
+                        const anther = document.createElementNS(ns, "circle");
+                        anther.setAttribute("cx", ex);
+                        anther.setAttribute("cy", ey);
+                        anther.setAttribute("r", "1.5");
+                        anther.setAttribute("fill", "#ffcccc");
+
+                        stamen.appendChild(path);
+                        stamen.appendChild(anther);
+                        stamenGroup.appendChild(stamen);
+                    }
+
+                    group.appendChild(stamenGroup);
+
+                    // 2. Add Floret
+                    const floret = document.createElementNS(ns, "use");
+                    floret.setAttribute("href", "#floret");
+                    floret.setAttribute("transform", `scale(${config.scale}, 0.4) rotate(${config.rotate})`);
+                    if (config.opacity) floret.setAttribute("opacity", config.opacity);
+
+                    group.appendChild(floret);
+                    flower.appendChild(group);
+                });
+            });
+        }
     </script>
 </body>
 
