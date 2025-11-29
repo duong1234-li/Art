@@ -226,7 +226,7 @@
                 document.querySelector('.leaves').style.filter = 'url(#water-ripple)';
                 document.querySelector('g[filter="url(#bloom)"]').style.filter = 'url(#bloom) url(#water-ripple)';
 
-                waterBtn.textContent = 'Disable Water';
+                waterBtn.textContent = 'Disable Ocean';
                 document.title = 'Im Drowning';
                 animateWater();
             } else {
@@ -235,7 +235,7 @@
                 document.querySelector('.leaves').style.filter = 'none';
                 document.querySelector('g[filter="url(#bloom)"]').style.filter = 'url(#bloom)';
 
-                waterBtn.textContent = 'Enable Water';
+                waterBtn.textContent = 'Enable Ocean';
                 document.title = 'Spider Lily';
                 cancelAnimationFrame(waterAnimationId);
             }
