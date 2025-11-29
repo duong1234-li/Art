@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #0d0d0d;
+    --bg-color: #000000;
     --text-color: #ff3333;
 }
 
@@ -47,7 +47,7 @@ svg {
     position: absolute;
     right: 20px;
     padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0);
     border: 1px solid rgba(255, 0, 0, 0.63);
     color: #fff;
     font-family: 'Roboto', sans-serif;
@@ -74,4 +74,29 @@ svg {
 #water-toggle:hover {
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(233, 12, 12, 0.4);
+}
+
+@media (max-width: 768px) {
+
+    #snow-toggle,
+    #rain-toggle,
+    #water-toggle {
+        top: auto;
+        bottom: 20px;
+        right: auto;
+        transform: none;
+    }
+
+    #snow-toggle {
+        left: 20px;
+    }
+
+    #rain-toggle {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #water-toggle {
+        right: 20px;
+    }
 }
